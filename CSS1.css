@@ -1,0 +1,535 @@
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #FFD1DC, #B3E0FF);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hidden-btn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 20px;
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+    position: relative;
+}
+
+/* Header Styles */
+header {
+    margin-bottom: 30px;
+}
+
+.birthday-heading {
+    font-size: 3em;
+    color: #E67E99;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.birthday-heading::after {
+    content: '|';
+    display: inline-block;
+    animation: blink 0.7s infinite;
+    margin-left: 5px;
+    color: #E67E99;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Intro Message Styles */
+.intro-message p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Section Styles */
+section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2em;
+    color: #87CEEB;
+    margin-bottom: 20px;
+}
+
+/* Popup Styles */
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+}
+
+#verify-yes { background-color: #4CAF50; }
+#verify-no { background-color: #F44336; }
+
+/* Balloon Animation */
+.balloon {
+    position: fixed;
+    bottom: -150px;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: -1;
+    animation: rise 10s ease-in forwards;
+}
+
+@keyframes rise {
+    from { transform: translateY(0) rotate(0deg); }
+    to { transform: translateY(-100vh) rotate(180deg); }
+}
+
+/* Confetti Animation */
+@keyframes confetti-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0.8; }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation-timing-function: linear;
+    border-radius: 50%;
+}
+
+/* Galeri Karangan Bunga */
+.gallery-container {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-item {
+    position: absolute;
+    width: 130px;
+    height: 170px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    background-size: cover;
+    background-position: center;
+    transform-origin: bottom center;
+    z-index: 1;
+    position: absolute;
+}
+
+/* Efek Teks di Bawah Foto */
+.photo-item .photo-caption-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, rgba(255, 182, 193, 0.7), rgba(255, 255, 255, 0));
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-item .photo-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-shadow: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.photo-item:hover .photo-caption-bg,
+.photo-item:hover .photo-caption {
+    opacity: 1;
+}
+
+.photo-item:hover {
+    transform: scale(1.3) translateY(-20px) rotate(0deg) !important;
+    z-index: 10;
+}
+
+/* Posisi setiap foto */
+.photo-item.photo-1 { transform: rotate(-45deg); top: 50px; left: 10%; background-image: url('images/1.jpg'); }
+.photo-item.photo-2 { transform: rotate(-35deg); top: 20px; left: 20%; background-image: url('images/2.jpg'); }
+.photo-item.photo-3 { transform: rotate(-20deg); top: 0; left: 35%; background-image: url('images/3.jpg'); }
+.photo-item.photo-4 { transform: rotate(-5deg); top: 150px; left: 35%; z-index: 4; background-image: url('images/4.jpg'); }
+.photo-item.photo-5 { transform: rotate(5deg); top: 0; right: 35%; background-image: url('images/5.jpg'); }
+.photo-item.photo-6 { transform: rotate(20deg); top: 20px; right: 20%; background-image: url('images/6.jpg'); }
+.photo-item.photo-7 { transform: rotate(35deg); top: 50px; right: 10%; background-image: url('images/7.jpg'); }
+.photo-item.photo-8 { transform: rotate(-10deg); top: 150px; left: 20%; z-index: 2; background-image: url('images/8.jpg'); }
+.photo-item.photo-9 { transform: rotate(10deg); top: 150px; right: 25%; z-index: 2; background-image: url('images/9.jpg'); }
+.photo-item.photo-10 { transform: rotate(0deg); top: 180px; left: 45%; z-index: 3; background-image: url('images/10.jpg'); }
+
+
+/* Kertas Pembungkus (simulasi) */
+.gallery-container::before {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    width: 60%;
+    height: 200px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.1));
+    border-radius: 50% 50% 0 0;
+    z-index: 0;
+}
+
+.gallery-container::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    width: 50%;
+    height: 200px;
+    background: linear-gradient(to top, rgba(255,255,255,0.7), rgba(255,255,255,0.1));
+    border-radius: 50% 50% 0 0;
+    z-index: 0;
+}
+
+/* Modal Foto dan Surat */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.modal-content-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.modal-image {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    border: 5px solid #fff;
+    border-radius: 5px;
+}
+
+/* Highlight baru untuk teks di modal foto */
+#modal-caption-text {
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn-photo, .close-btn-letter {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+/* Desain Countdown */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.countdown-item {
+    text-align: center;
+}
+
+.countdown-item span {
+    font-size: 3em;
+    color: #E67E99;
+    font-weight: bold;
+    display: block;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.8em;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Modal Surat - KODE FINAL */
+.letter-content {
+    position: relative;
+    width: 400px;
+    height: 450px;
+    max-width: 90%;
+    background-color: #FDF5E6;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    perspective: 1000px;
+}
+
+.letter-envelope {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 30px; /* Tambahkan padding agar teks tidak terlalu mepet */
+    box-sizing: border-box;
+    background-color: #FFB6C1;
+    border-radius: 10px;
+    z-index: 20;
+    transform-origin: top;
+    transition: transform 0.8s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    backface-visibility: hidden;
+}
+
+.letter-paper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-top: 50px;
+    padding: 30px;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 1.6;
+    z-index: 10;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.8s ease-in-out 1s, opacity 0.5s ease-in 0.5s;
+}
+
+/* Kelas untuk animasi membuka surat */
+.letter-modal-open .letter-envelope {
+    transform: rotateX(180deg);
+}
+
+.letter-modal-open .letter-paper {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-photo-open .modal-content-wrapper {
+    opacity: 1;
+}
+
+.letter-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #F08080;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 1s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+}
+
+.letter-button:hover {
+    transform: scale(1.1);
+}
+
+/* ==================================== */
+/* === RESPONSIVE DESIGN (MOBILE) === */
+/* ==================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        margin: 10px;
+    }
+    
+    .birthday-heading {
+        font-size: 2.2em;
+    }
+
+    .intro-message p {
+        font-size: 1em;
+    }
+
+    section h2 {
+        font-size: 1.7em;
+    }
+
+    .gallery-container {
+        height: 350px;
+    }
+    
+    .photo-item {
+        width: 100px;
+        height: 120px;
+    }
+    
+    .letter-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+        top: 10px;
+        right: 10px;
+    }
+
+    .close-btn-photo, .close-btn-letter {
+        font-size: 30px;
+        top: -10px;
+        right: -10px;
+    }
+    
+    .letter-content {
+        padding: 20px;
+        max-width: 90%;
+        height: 300px;
+    }
+
+    .letter-paper {
+        padding: 20px;
+    }
+
+    .gallery-container::before {
+        height: 150px;
+    }
+
+    .countdown-item span {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .birthday-heading {
+        font-size: 1.8em;
+    }
+    
+    .intro-message p {
+        font-size: 0.9em;
+    }
+    
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    .photo-item {
+        width: 80px;
+        height: 100px;
+    }
+
+    .countdown-item span {
+        font-size: 1.5em;
+    }
+    
+    .gallery-container {
+        height: 300px;
+    }
+    
+    .gallery-container::before {
+        height: 120px;
+    }
+}
+
+/* Kelas ini akan membuat modal terlihat */
+.modal-open .modal-content-wrapper {
+    opacity: 1;
+}
